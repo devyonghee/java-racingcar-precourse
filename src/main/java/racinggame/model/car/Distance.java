@@ -1,6 +1,6 @@
 package racinggame.model.car;
 
-public class Distance {
+public final class Distance {
 
 	private final int value;
 
@@ -27,7 +27,7 @@ public class Distance {
 
 	private void validate(int value) {
 		if (value < 0) {
-			throw new IllegalArgumentException("distance must be positive");
+			throw new IllegalArgumentException(String.format("distance must be positive, but provided %d", value));
 		}
 	}
 }
