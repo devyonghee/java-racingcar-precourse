@@ -34,10 +34,13 @@ class EngineTest {
 	@CsvSource({"4,false", "5,true", "6,true"})
 	void worked(int randomNumber, boolean expected) {
 		try (MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
+			//given
 			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 				.thenReturn(randomNumber);
 
-			assertThat(Engine.from(RotationMovementCondition.from(Rotation.from(5))).worked())
+			//when, then
+			assertThat(Engine.from(RotationMovementCondition.from(Rotation.from(5)))
+				.worked())
 				.isEqualTo(expected);
 		}
 
