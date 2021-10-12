@@ -22,7 +22,7 @@ class LapsTest {
 	void instance_negativeCount_illegalArgumentExceptionThrown() {
 		assertThatIllegalArgumentException()
 			.isThrownBy(() -> Laps.from(-1))
-			.withMessageContaining("laps count must be greater than zero");
+			.withMessageContaining("laps count must be positive");
 	}
 
 	@ParameterizedTest

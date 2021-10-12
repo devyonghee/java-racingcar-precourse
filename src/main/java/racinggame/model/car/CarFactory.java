@@ -13,6 +13,8 @@ public final class CarFactory {
 	private final MovementCondition<Rotation> engineMovementCondition;
 
 	private CarFactory(NamingArtist artist, MovementCondition<Rotation> engineMovementCondition) {
+		validate(artist);
+		validate(engineMovementCondition);
 		this.artist = artist;
 		this.engineMovementCondition = engineMovementCondition;
 	}
@@ -27,5 +29,17 @@ public final class CarFactory {
 			cars.add(Car.of(name, Engine.from(engineMovementCondition)));
 		}
 		return Cars.from(cars);
+	}
+
+	private void validate(MovementCondition<Rotation> engineMovementCondition) {
+		if (engineMovementCondition == null) {
+			throw new IllegalArgumentException("engine movement condition must not be null");
+		}
+	}
+
+	private void validate(NamingArtist artist) {
+		if (artist == null) {
+			throw new IllegalArgumentException("naming artist must not be null");
+		}
 	}
 }
