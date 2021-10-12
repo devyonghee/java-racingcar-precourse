@@ -5,7 +5,6 @@ import static org.mockito.Mockito.*;
 
 import java.util.Collections;
 
-import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -36,7 +35,7 @@ class CarPreparerTest {
 		Distance startingLine = Distance.from(0);
 		assertThat(CarPreparer.from(startingLine)
 			.prepare(Cars.from(Collections.singleton(mock(Car.class)))))
-			.extracting(Locations::collection, InstanceOfAssertFactories.ITERABLE)
+			.extracting(Locations::collection, ITERABLE)
 			.extracting("distance")
 			.containsExactly(startingLine);
 	}

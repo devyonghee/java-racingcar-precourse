@@ -18,9 +18,9 @@ public final class Laps {
 	}
 
 	private void validate(int count) {
-		if (count <= 0) {
+		if (count < 0) {
 			throw new IllegalArgumentException(
-				String.format("laps count must be greater than zero, but provided %d", count));
+				String.format("laps count must be positive, but provided %d", count));
 		}
 	}
 }

@@ -11,8 +11,8 @@ public final class Distance {
 		this.value = value;
 	}
 
-	public static Distance from(int init) {
-		return new Distance(init);
+	public static Distance from(int value) {
+		return new Distance(value);
 	}
 
 	public int value() {

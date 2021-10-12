@@ -5,7 +5,6 @@ import static org.mockito.Mockito.*;
 
 import java.util.Collections;
 
-import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -52,7 +51,7 @@ class CarFactoryTest {
 		//when, then
 		assertThat(CarFactory.of(mockArtist, mockMovementCondition)
 			.cars())
-			.extracting(Cars::collection, InstanceOfAssertFactories.ITERABLE)
+			.extracting(Cars::collection, ITERABLE)
 			.extracting("name", "engine.condition")
 			.containsExactly(tuple(name, mockMovementCondition));
 	}

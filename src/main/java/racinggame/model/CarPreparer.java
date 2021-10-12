@@ -22,9 +22,9 @@ public final class CarPreparer {
 	public Locations prepare(Cars cars) {
 		Collection<Location> locations = new ArrayList<>();
 		for (Car car : cars.collection()) {
-			locations.add(new Location(car, startingLine));
+			locations.add(Location.of(car, startingLine));
 		}
-		return new Locations(locations);
+		return Locations.from(locations);
 	}
 
 	private void validate(Distance startingLine) {
