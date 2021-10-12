@@ -40,7 +40,8 @@ class CarTest {
 	@DisplayName("이름 반환")
 	void name() {
 		String nameString = "name";
-		assertThat(Car.of(Name.from(nameString), mock(Engine.class)).name())
+		assertThat(Car.of(Name.from(nameString), mock(Engine.class))
+			.name())
 			.isEqualTo(Name.from(nameString));
 	}
 
@@ -50,10 +51,12 @@ class CarTest {
 	void move(boolean worked, MoveType expected) {
 		//given
 		Engine mockEngine = mock(Engine.class);
-		when(mockEngine.worked()).thenReturn(worked);
+		when(mockEngine.worked())
+			.thenReturn(worked);
 
 		//when, then
-		assertThat(Car.of(mock(Name.class), mockEngine).move())
+		assertThat(Car.of(mock(Name.class), mockEngine)
+			.move())
 			.isEqualTo(expected);
 	}
 }

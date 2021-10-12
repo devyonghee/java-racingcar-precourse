@@ -44,12 +44,14 @@ class CarFactoryTest {
 		//given
 		Name name = Name.from("name");
 		NamingArtist mockArtist = mock(NamingArtist.class);
-		when(mockArtist.nameCollection()).thenReturn(Collections.singleton(name));
+		when(mockArtist.nameCollection())
+			.thenReturn(Collections.singleton(name));
 
 		MovementCondition<Rotation> mockMovementCondition = mock(RotationMovementCondition.class);
 
 		//when, then
-		assertThat(CarFactory.of(mockArtist, mockMovementCondition).cars())
+		assertThat(CarFactory.of(mockArtist, mockMovementCondition)
+			.cars())
 			.extracting(Cars::collection, InstanceOfAssertFactories.ITERABLE)
 			.extracting("name", "engine.condition")
 			.containsExactly(tuple(name, mockMovementCondition));

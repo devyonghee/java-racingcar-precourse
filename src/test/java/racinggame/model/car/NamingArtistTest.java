@@ -45,7 +45,8 @@ class NamingArtistTest {
 		//given
 		String string = "string";
 		StringsProvider mockProvider = mock(StringsProvider.class);
-		when(mockProvider.provide()).thenReturn(Collections.singleton(string));
+		when(mockProvider.provide())
+			.thenReturn(Collections.singleton(string));
 
 		//when, then
 		assertThat(NamingArtist.of(mockProvider, StringLengthLimit.from(10))
@@ -60,10 +61,12 @@ class NamingArtistTest {
 	void nameCollection_emptyOrLongLength_illegalArgumentExceptionThrown(String string, String expectedMessage) {
 		//given
 		StringsProvider mockProvider = mock(StringsProvider.class);
-		when(mockProvider.provide()).thenReturn(Collections.singleton(string));
+		when(mockProvider.provide())
+			.thenReturn(Collections.singleton(string));
 
 		assertThatIllegalArgumentException()
-			.isThrownBy(() -> NamingArtist.of(mockProvider, StringLengthLimit.from(5)).nameCollection())
+			.isThrownBy(() -> NamingArtist.of(mockProvider, StringLengthLimit.from(5))
+				.nameCollection())
 			.withMessageContaining(expectedMessage);
 	}
 }

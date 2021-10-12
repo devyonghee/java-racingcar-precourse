@@ -12,6 +12,7 @@ class MoveTypeTest {
 	@DisplayName("거리 반환")
 	@CsvSource({"GO,1", "STOP,0"})
 	void distance(MoveType type, int expected) {
-		assertThat(type.distance()).isEqualTo(expected);
+		assertThat(type.distance())
+			.isEqualTo(expected);
 	}
 }

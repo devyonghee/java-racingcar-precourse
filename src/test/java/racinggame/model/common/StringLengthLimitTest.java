@@ -20,7 +20,8 @@ class StringLengthLimitTest {
 	@Test
 	@DisplayName("음수일 경우 객체화")
 	void instance_negativeInit_illegalArgumentExceptionThrown() {
-		assertThatIllegalArgumentException().isThrownBy(() -> StringLengthLimit.from(-1))
+		assertThatIllegalArgumentException()
+			.isThrownBy(() -> StringLengthLimit.from(-1))
 			.withMessageContaining("length limit must be positive");
 	}
 
@@ -31,7 +32,8 @@ class StringLengthLimitTest {
 		int lengthLimit = 10;
 
 		//when, then
-		assertThat(StringLengthLimit.from(lengthLimit).length())
+		assertThat(StringLengthLimit.from(lengthLimit)
+			.length())
 			.isEqualTo(lengthLimit);
 	}
 
@@ -39,7 +41,8 @@ class StringLengthLimitTest {
 	@DisplayName("제한 확인")
 	@CsvSource({"name,true", "longName,false"})
 	void isOk(String target, boolean expected) {
-		assertThat(StringLengthLimit.from(5).isOk(target))
+		assertThat(StringLengthLimit.from(5)
+			.isOk(target))
 			.isEqualTo(expected);
 	}
 }

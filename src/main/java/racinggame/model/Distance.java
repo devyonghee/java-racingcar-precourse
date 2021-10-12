@@ -1,4 +1,6 @@
-package racinggame.model.car;
+package racinggame.model;
+
+import java.util.Objects;
 
 public final class Distance {
 
@@ -23,6 +25,21 @@ public final class Distance {
 
 	public boolean equalOrMoreThan(Distance distance) {
 		return distance.value <= value;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Distance distance = (Distance)o;
+		return value == distance.value;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(value);
 	}
 
 	private void validate(int value) {
