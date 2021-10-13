@@ -1,9 +1,16 @@
 package racinggame;
 
-import nextstep.test.NSTest;
+import static org.awaitility.Awaitility.*;
+
+import java.time.Duration;
+
+import org.awaitility.core.ThrowingRunnable;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
+
+import nextstep.test.NSTest;
 
 public class ApplicationTest extends NSTest {
     private static final int MOVING_FORWARD = 4;
@@ -16,9 +23,25 @@ public class ApplicationTest extends NSTest {
         setUp();
     }
 
+    // @Test
+    // void 전진_정지() {
+    //     assertRandomTest(() -> {
+    //         run("pobi,woni", "1");
+    //         verify("pobi : -", "woni : ", "최종 우승자는 pobi 입니다.");
+    //     }, MOVING_FORWARD, STOP);
+    // }
+
+    // @Test
+    // void 이름에_대한_예외_처리() {
+    //     assertSimpleTest(() -> {
+    //         runNoLineFound("pobi,javaji");
+    //         verify(ERROR_MESSAGE);
+    //     });
+    // }
+
     @Test
     void 전진_정지() {
-        assertRandomTest(() -> {
+        assertRandomTestAtMostOneSecond(() -> {
             run("pobi,woni", "1");
             verify("pobi : -", "woni : ", "최종 우승자는 pobi 입니다.");
         }, MOVING_FORWARD, STOP);
@@ -26,10 +49,24 @@ public class ApplicationTest extends NSTest {
 
     @Test
     void 이름에_대한_예외_처리() {
-        assertSimpleTest(() -> {
+        assertSimpleTestAtMostOneSecond(() -> {
             runNoLineFound("pobi,javaji");
             verify(ERROR_MESSAGE);
         });
+    }
+
+    private void assertRandomTestAtMostOneSecond(final Executable executable, final int value, final int... values) {
+        assertAtMostOneSecond(() -> assertRandomTest(executable, value, values));
+    }
+
+    private void assertSimpleTestAtMostOneSecond(Executable executable) {
+        assertAtMostOneSecond(() -> assertSimpleTest(executable));
+    }
+
+    private void assertAtMostOneSecond(ThrowingRunnable runnable) {
+        await()
+            .atMost(Duration.ofSeconds(1))
+            .untilAsserted(runnable);
     }
 
     @AfterEach
@@ -39,6 +76,6 @@ public class ApplicationTest extends NSTest {
 
     @Override
     public void runMain() {
-        Application.main(new String[]{});
+        Application.main(new String[] {});
     }
 }

@@ -31,8 +31,7 @@ public final class Billboard {
 	}
 
 	public void exposure(Winners winners) {
-		printer.printf(WINNER_FORMAT, String.join(WINNERS_DELIMITER, winners.getNames()));
-		printer.println();
+		printer.println(String.format(WINNER_FORMAT, String.join(WINNERS_DELIMITER, winners.getNames())));
 	}
 
 	private void exposure(LocationsResponse locations) {
@@ -42,8 +41,8 @@ public final class Billboard {
 	}
 
 	private void exposure(LocationResponse location) {
-		this.printer.printf(LOCATION_FORMAT, location.getName(), repeatDistanceCharacter(location.getPoint()));
-		printer.println();
+		this.printer.println(
+			String.format(LOCATION_FORMAT, location.getName(), repeatDistanceCharacter(location.getPoint())));
 	}
 
 	private String repeatDistanceCharacter(int point) {

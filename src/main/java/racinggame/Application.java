@@ -36,8 +36,7 @@ public class Application {
 		try {
 			return supplier.get();
 		} catch (IllegalArgumentException e) {
-			System.out.printf(ERROR_MESSAGE_FORMAT, e.getMessage());
-			System.out.println();
+			System.out.println(String.format(ERROR_MESSAGE_FORMAT, e.getMessage()));
 			return tryUntilValid(supplier);
 		}
 
