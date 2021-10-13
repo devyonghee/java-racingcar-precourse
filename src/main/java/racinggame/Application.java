@@ -28,7 +28,7 @@ public class Application {
 		RacingStadium.of(
 				tryUntilValid(cars()),
 				tryUntilValid(lapsLimit()),
-				new Billboard(System.out))
+				Billboard.from(System.out))
 			.play();
 	}
 

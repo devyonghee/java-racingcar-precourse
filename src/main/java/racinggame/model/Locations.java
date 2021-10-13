@@ -43,7 +43,7 @@ public final class Locations {
 		Collection<Car> cars = new LinkedHashSet<>();
 		Location farthestLocation = farthestLocation();
 		for (Location location : locations) {
-			cars.addAll(sameDistanceCars(farthestLocation, location));
+			cars.addAll(getSameDistanceCars(farthestLocation, location));
 		}
 		return Cars.from(cars);
 	}
@@ -64,7 +64,7 @@ public final class Locations {
 		}
 	}
 
-	private Collection<Car> sameDistanceCars(Location firstLocation, Location secondLocation) {
+	private Collection<Car> getSameDistanceCars(Location firstLocation, Location secondLocation) {
 		if (firstLocation.equalDistance(secondLocation)) {
 			return Arrays.asList(firstLocation.car(), secondLocation.car());
 		}

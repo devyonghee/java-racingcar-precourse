@@ -17,8 +17,12 @@ public final class Billboard {
 
 	private final PrintStream printer;
 
-	public Billboard(PrintStream printer) {
+	private Billboard(PrintStream printer) {
 		this.printer = printer;
+	}
+
+	public static Billboard from(PrintStream printer) {
+		return new Billboard(printer);
 	}
 
 	public void exposure(Results history) {
