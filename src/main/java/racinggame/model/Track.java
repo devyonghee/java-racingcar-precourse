@@ -44,7 +44,7 @@ public final class Track {
 	 * @return 멀리 간 자동차들
 	 */
 	public Cars mostMovedCars() {
-		return locations.mostMoves();
+		return locations.mostMovedCars();
 	}
 
 	public LocationsHistory history() {

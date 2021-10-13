@@ -120,7 +120,7 @@ class TrackTest {
 		//given
 		Cars cars = mock(Cars.class);
 		Locations mockLocations = mock(Locations.class);
-		when(mockLocations.mostMoves())
+		when(mockLocations.mostMovedCars())
 			.thenReturn(cars);
 
 		//when, then

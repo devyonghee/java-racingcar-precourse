@@ -1,7 +1,6 @@
 package racinggame.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -39,13 +38,9 @@ public final class Locations {
 	 * <p>가장 멀리간 자동차들 반환</p>
 	 * @return 멀리간 자동차들
 	 */
-	public Cars mostMoves() {
-		Collection<Car> cars = new LinkedHashSet<>();
-		Location farthestLocation = farthestLocation();
-		for (Location location : locations) {
-			cars.addAll(getSameDistanceCars(farthestLocation, location));
-		}
-		return Cars.from(cars);
+	public Cars mostMovedCars() {
+		return farthestLocations()
+			.cars();
 	}
 
 	/**
@@ -58,17 +53,35 @@ public final class Locations {
 		return Collections.unmodifiableCollection(locations);
 	}
 
+	private Locations farthestLocations() {
+		LinkedHashSet<Location> locations = new LinkedHashSet<>();
+		locations.add(farthestLocation());
+
+		Locations farthestLocations = new Locations(locations);
+		for (Location location : this.locations) {
+			farthestLocations.addOnlySameDistance(location);
+		}
+		return farthestLocations;
+	}
+
+	private Cars cars() {
+		Collection<Car> cars = new ArrayList<>();
+		for (Location location : this.locations) {
+			cars.add(location.car());
+		}
+		return Cars.from(cars);
+	}
+
+	private void addOnlySameDistance(Location location) {
+		if (locations.iterator().next().equalDistance(location)) {
+			locations.add(location);
+		}
+	}
+
 	private void validate(Collection<Location> locations) {
 		if (locations == null || locations.isEmpty()) {
 			throw new IllegalArgumentException("locations must not be empty");
 		}
-	}
-
-	private Collection<Car> getSameDistanceCars(Location firstLocation, Location secondLocation) {
-		if (firstLocation.equalDistance(secondLocation)) {
-			return Arrays.asList(firstLocation.car(), secondLocation.car());
-		}
-		return Collections.emptyList();
 	}
 
 	private Location farthestLocation() {

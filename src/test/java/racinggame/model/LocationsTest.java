@@ -53,7 +53,7 @@ class LocationsTest {
 
 	@Test
 	@DisplayName("가장 멀리 간 자동차들")
-	void mostMoves() {
+	void mostMovedCars() {
 		//given
 		Car mockCar1 = mock(Car.class);
 		Car mockCar2 = mock(Car.class);
@@ -66,7 +66,7 @@ class LocationsTest {
 				location(mockCar2, 2),
 				location(mockCar3, 3),
 				location(mockCar4, 3)))
-			.mostMoves())
+			.mostMovedCars())
 			.extracting(Cars::collection, ITERABLE)
 			.containsExactly(mockCar3, mockCar4);
 	}
