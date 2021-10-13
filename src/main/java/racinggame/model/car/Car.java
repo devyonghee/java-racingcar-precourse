@@ -18,10 +18,18 @@ public final class Car {
 		return new Car(name, engine);
 	}
 
+	/**
+	 * <p>자동차 이름을 반환한다.</p>
+	 * @return 이름
+	 */
 	public Name name() {
 		return name;
 	}
 
+	/**
+	 * <p>엔진에 따라 자동차 움직임 유형을 반환한다.</p>
+	 * @return 움직임 유형{@link MoveType}
+	 */
 	public MoveType move() {
 		if (engine.worked()) {
 			return MoveType.GO;

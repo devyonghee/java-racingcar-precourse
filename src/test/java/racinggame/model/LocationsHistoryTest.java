@@ -48,9 +48,9 @@ class LocationsHistoryTest {
 
 	@Test
 	@DisplayName("기록 수")
-	void length() {
+	void size() {
 		assertThat(LocationsHistory.from(Arrays.asList(mock(Locations.class), mock(Locations.class)))
-			.length())
+			.size())
 			.isEqualTo(2);
 	}
 

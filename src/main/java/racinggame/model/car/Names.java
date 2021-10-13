@@ -16,6 +16,12 @@ public final class Names {
 		return new Names(names);
 	}
 
+	/**
+	 * {@link Collections#unmodifiableCollection(Collection)} 결과를 반환하는 메서드
+	 * <p>이름 컬렉션을 반환</p>
+	 * <p>외부에서 리스트를 수정할 수 없도록 unmodifiable 반환</p>
+	 * @return {@link Collections#unmodifiableCollection(Collection)}
+	 */
 	public Collection<Name> collection() {
 		return Collections.unmodifiableCollection(names);
 	}

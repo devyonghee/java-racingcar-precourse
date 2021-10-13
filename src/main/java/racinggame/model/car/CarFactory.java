@@ -23,6 +23,10 @@ public final class CarFactory {
 		return new CarFactory(artist, engineMovementCondition);
 	}
 
+	/**
+	 * <p>주어진 엔진 조건과 이름에 따라 자동차들을 생성하고 반환한다</p>
+	 * @return 자동차들
+	 */
 	public Cars cars() {
 		Collection<Car> cars = new ArrayList<>();
 		for (Name name : artist.nameCollection()) {

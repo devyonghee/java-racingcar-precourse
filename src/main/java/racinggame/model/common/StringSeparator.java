@@ -20,6 +20,10 @@ public final class StringSeparator implements StringsProvider {
 		return new StringSeparator(target, delimiter);
 	}
 
+	/**
+	 * <p>주어진 문자를 구분자를 통해 나눠서 제공</p>
+	 * @return 나눠진 문자열
+	 */
 	@Override
 	public Collection<String> provide() {
 		return Collections.unmodifiableList(Arrays.asList(target.split(this.delimiter)));

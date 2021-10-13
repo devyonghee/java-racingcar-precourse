@@ -23,6 +23,11 @@ public final class NamingArtist {
 		return new NamingArtist(provider, lengthLimit);
 	}
 
+	/**
+	 * {@link Names#collection()} 결과를 반환하는 메서드
+	 * <p>이름 컬렉션을 반환한다.</p>
+	 * @return {@link Names#collection()}
+	 */
 	public Collection<Name> nameCollection() {
 		if (hasCache()) {
 			return cacheNames.collection();

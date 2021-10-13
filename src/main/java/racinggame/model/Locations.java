@@ -23,6 +23,10 @@ public final class Locations {
 		return new Locations(locations);
 	}
 
+	/**
+	 * <p>움직인 다음 위치들을 반환</p>
+	 * @return 움직인 위치들
+	 */
 	public Locations nextMoves() {
 		Collection<Location> newLocations = new ArrayList<>();
 		for (Location location : locations) {
@@ -31,6 +35,10 @@ public final class Locations {
 		return new Locations(newLocations);
 	}
 
+	/**
+	 * <p>가장 멀리간 자동차들 반환</p>
+	 * @return 멀리간 자동차들
+	 */
 	public Cars mostMoves() {
 		Collection<Car> cars = new LinkedHashSet<>();
 		Location farthestLocation = farthestLocation();
@@ -40,6 +48,12 @@ public final class Locations {
 		return Cars.from(cars);
 	}
 
+	/**
+	 * {@link Collections#unmodifiableCollection(Collection)} 결과를 반환하는 메서드
+	 * <p>위치 컬렉션을 반환</p>
+	 * <p>외부에서 리스트를 수정할 수 없도록 unmodifiable 반환</p>
+	 * @return {@link Collections#unmodifiableCollection(Collection)}
+	 */
 	public Collection<Location> collection() {
 		return Collections.unmodifiableCollection(locations);
 	}

@@ -19,6 +19,11 @@ public final class CarPreparer {
 		return new CarPreparer(startingLine);
 	}
 
+	/**
+	 * <p>자동차들을 시작 지점의 위치들 생성</p>
+	 * @param cars 세팅하기 위한 자동차들
+	 * @return 시작지점의 위치들
+	 */
 	public Locations prepare(Cars cars) {
 		Collection<Location> locations = new ArrayList<>();
 		for (Car car : cars.collection()) {

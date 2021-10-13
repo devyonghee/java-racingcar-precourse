@@ -17,6 +17,11 @@ public final class StringLengthLimit implements Limit<String> {
 		return length;
 	}
 
+	/**
+	 * <p>주어진 문자가 길이에 문제가 없는지 판단</p>
+	 * @param target 길이 제한을 확인할 문자
+	 * @return 길이 제한에 문제 없는지 여부
+	 */
 	@Override
 	public boolean isOk(String target) {
 		return target.length() <= length;

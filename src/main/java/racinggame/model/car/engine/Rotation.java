@@ -13,6 +13,11 @@ public final class Rotation {
 		return new Rotation(count);
 	}
 
+	/**
+	 * <p>현재 객체가 대상보다 같거나 작은지 판단한다.</p>
+	 * @param rotation 비교할 대상
+	 * @return 대상보다 같거나 작은지 여부
+	 */
 	boolean equalOrLessThan(Rotation rotation) {
 		return count <= rotation.count;
 	}

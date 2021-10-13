@@ -22,24 +22,39 @@ public final class Track {
 		return new Track(locations, lapsLimit);
 	}
 
+	/**
+	 * <p>위치들를 이동시키고 기록</p>
+	 */
 	public void go() {
-		if (isRedLight()) {
-			throw new IllegalStateException("can`t go any more");
-		}
+		validateTrafficLight();
 		locations = locations.nextMoves();
 		history.add(locations);
 	}
 
+	/**
+	 * <p>현재 계속 진행해도 되는지 여부</p>
+	 * @return 진행 가능 여부
+	 */
 	public boolean isGreenLight() {
 		return this.lapsLimit.isOk(currentLaps());
+	}
+
+	/**
+	 * <p>가장 멀리 간 자동차들 반환</p>
+	 * @return 멀리 간 자동차들
+	 */
+	public Cars mostMovedCars() {
+		return locations.mostMoves();
 	}
 
 	public LocationsHistory history() {
 		return history;
 	}
 
-	public Cars mostMovedCars() {
-		return locations.mostMoves();
+	private void validateTrafficLight() {
+		if (isRedLight()) {
+			throw new IllegalStateException("can`t go any more");
+		}
 	}
 
 	private boolean isRedLight() {
@@ -47,7 +62,7 @@ public final class Track {
 	}
 
 	private Laps currentLaps() {
-		return Laps.from(history.length());
+		return Laps.from(history.size());
 	}
 
 	private void validate(Locations locations) {

@@ -13,6 +13,11 @@ public final class Laps {
 		return new Laps(count);
 	}
 
+	/**
+	 * <p>현재 객체가 주어진 대상보다 더 큰지 여부</p>
+	 * @param laps 비교할 대상
+	 * @return 큰 여부
+	 */
 	boolean overThan(Laps laps) {
 		return laps.count < count;
 	}

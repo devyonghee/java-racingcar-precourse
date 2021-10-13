@@ -9,6 +9,10 @@ public enum MoveType {
 		this.distance = distance;
 	}
 
+	/**
+	 * <p>유형에 따아 움직인 거리를 반환한다</p>
+	 * @return 움직인 거리
+	 */
 	public int distance() {
 		return distance;
 	}

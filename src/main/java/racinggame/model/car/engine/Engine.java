@@ -18,6 +18,12 @@ public final class Engine {
 		return new Engine(condition);
 	}
 
+	/**
+	 * {@link MovementCondition#enough(Object)} 결과를 반환하는 메소드.
+	 * <p>엔진을 작동하기 위한 조건 충족 여부를 반환한다.</p>
+	 *
+	 * @return {@link MovementCondition#enough(Object)}
+	 */
 	public boolean worked() {
 		return condition.enough(randomRotation());
 	}
